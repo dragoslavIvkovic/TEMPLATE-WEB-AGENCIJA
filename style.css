@@ -994,6 +994,15 @@ img {
     margin: 0 auto 4rem;
 }
 
+.portfolio-header-more {
+    margin: 0.85rem 0 0;
+}
+
+.portfolio-header-more .sv3-link {
+    margin-top: 0;
+    justify-content: center;
+}
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1355,8 +1364,7 @@ img {
 }
 
 .contact-form-container iframe,
-#modal-view-form iframe,
-.footer-newsletter-embed iframe {
+#modal-view-form iframe {
     max-width: 100%;
     display: block;
 }
