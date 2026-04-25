@@ -1518,92 +1518,142 @@ img {
 }
 
 
-/* New Services Grid styling based on image reference */
+/* New Services Grid — ujednačene visine, kartice u istom ritmu */
 .services-grid-new {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: stretch;
 }
 
 .sv3-card {
-    background: transparent;
+    height: 100%;
+    min-height: 0;
     display: flex;
     flex-direction: column;
+    background: #0a0a0c;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.sv3-card:hover {
+    box-shadow: 0 28px 56px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 131, 89, 0.18);
+    border-color: rgba(255, 131, 89, 0.22);
+    transform: translateY(-6px);
 }
 
 .sv3-image {
     width: 100%;
-    height: 350px;
+    flex-shrink: 0;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
+    background: #121214;
 }
 
 .sv3-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .sv3-card:hover .sv3-image img {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 .sv3-content {
-    background: #111214;
-    width: 90%;
-    margin-left: auto;
-    margin-top: -80px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 92%;
+    max-width: 100%;
+    margin: -2.5rem auto 0;
     position: relative;
     z-index: 2;
-    padding: 35px 30px;
-    transition: transform 0.3s ease;
+    padding: 1.5rem 1.5rem 1.75rem;
+    background: linear-gradient(180deg, #141518 0%, #0f1012 100%);
+    border-radius: 14px 14px 16px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s ease;
 }
 
 .sv3-card:hover .sv3-content {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .sv3-icon {
-    margin-bottom: 25px;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255, 131, 89, 0.1);
+    border: 1px solid rgba(255, 131, 89, 0.2);
 }
 
 .sv3-icon svg {
-    width: 45px;
-    height: 45px;
-    stroke: #fff;
+    width: 24px;
+    height: 24px;
+    stroke: #ff8359;
 }
 
 .sv3-content h3 {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    line-height: 1.3;
+    margin: 0 0 0.75rem;
+    min-height: 2.6em;
     color: #fff;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
 }
 
 .sv3-content p {
     color: var(--text-dim);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0 0 1.25rem;
+    flex: 1 1 auto;
 }
 
 .sv3-link {
-    color: #FF8359;
-    font-size: 1rem;
-    font-weight: 500;
+    color: #ff8359;
+    font-size: 0.95rem;
+    font-weight: 600;
     text-decoration: none;
-    display: inline-block;
-    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    margin-top: auto;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sv3-link::after {
+    content: "→";
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
 }
 
 .sv3-link:hover {
     color: #fff;
 }
 
+.sv3-link:hover::after {
+    transform: translateX(3px);
+}
+
 @media (max-width: 991px) {
     .services-grid-new {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -1611,9 +1661,15 @@ img {
     .services-grid-new {
         grid-template-columns: 1fr;
     }
+
     .sv3-content {
-        width: 95%;
-        margin-top: -50px;
+        width: 94%;
+        margin-top: -2rem;
+        padding: 1.35rem 1.25rem 1.5rem;
+    }
+
+    .sv3-content h3 {
+        min-height: 0;
     }
 }
 
