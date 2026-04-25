@@ -296,6 +296,8 @@ function initNeonPage() {
         revealElements.forEach(item => {
             document.querySelectorAll(item.class).forEach(el => {
                 if (el.closest('#hero')) return;
+                /* portfolio-item se animira zasebno (trigger: .portfolio-grid) — inače dupli gsap.from drži opacity:0 */
+                if (el.classList.contains('portfolio-item')) return;
                 gsap.from(el, {
                     scrollTrigger: {
                         trigger: el,
@@ -327,16 +329,27 @@ function initNeonPage() {
         });
 
         if (document.querySelector('.portfolio-grid')) {
-            gsap.from('.portfolio-item', {
+            /* Samo pomeraj (y), ne opacity — immediateRender+opacity=0 drži kartice invisible ako refresh ne uspe (preloader/SPA) */
+            gsap.from('.portfolio-grid .portfolio-item', {
+                y: 36,
+                duration: 0.75,
+                stagger: 0.1,
+                ease: 'power2.out',
+                immediateRender: false,
                 scrollTrigger: {
                     trigger: '.portfolio-grid',
-                    start: 'top 80%'
-                },
-                y: 60,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power3.out'
+                    start: 'top 92%',
+                    once: true,
+                    toggleActions: 'play none none none'
+                }
+            });
+        }
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    ScrollTrigger.refresh();
+                });
             });
         }
     }

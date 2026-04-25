@@ -183,7 +183,7 @@
                     <h2>Odabrani Radovi</h2>
                 </div>
                 <div class="portfolio-grid">
-                    <div class="portfolio-item reveal-up">
+                    <div class="portfolio-item">
                         <div class="item-visual">
                             <div class="abstract-card blue"></div>
                         </div>
@@ -192,7 +192,7 @@
                             <p>Fintech Dashboard</p>
                         </div>
                     </div>
-                    <div class="portfolio-item reveal-up">
+                    <div class="portfolio-item">
                         <div class="item-visual">
                             <div class="abstract-card purple"></div>
                         </div>
@@ -201,7 +201,7 @@
                             <p>Crypto Lifestyle</p>
                         </div>
                     </div>
-                    <div class="portfolio-item reveal-up">
+                    <div class="portfolio-item">
                         <div class="item-visual">
                             <div class="abstract-card gold"></div>
                         </div>
@@ -214,21 +214,53 @@
             </div>
         </section>
 
-        <!-- Section 5: Testimonials -->
+        <!-- Section 5: Testimonials (Google review stil) -->
         <section class="section testimonial-section">
             <div class="container">
                 <div class="section-header center reveal-up">
                     <span class="subtitle">Poverenje</span>
                     <h2>Šta klijenti kažu</h2>
                 </div>
-                <div class="testimonial-slider reveal-up">
-                    <div class="testimonial-card">
-                        <p class="quote">"NEON_LABS nivo profesionalizma je na svetskom nivou. Naš sajt se učitava pod 1s i konverzije su skočile za 40%."</p>
-                        <div class="author">
-                            <span class="name">Marko J.</span>
-                            <span class="position">CEO, TechCore</span>
+                <div class="google-reviews-grid reveal-up" role="list">
+                    <article class="g-review-card reveal-up" role="listitem">
+                        <div class="g-review-head">
+                            <div class="g-avatar" aria-hidden="true">MJ</div>
+                            <div class="g-profile">
+                                <span class="g-name">Marko Jovanović</span>
+                                <span class="g-badge">2 recenzije</span>
+                            </div>
                         </div>
-                    </div>
+                        <div class="g-stars" aria-label="ocena, 5 od 5 zvezdica" title="5/5">
+                            <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
+                        </div>
+                        <p class="g-text">NEON_LABS nivo profesionalizma je na nivou koji retko srećemo. Sajt se učitava ispod 1s, a konverzije su vidljivo bolje. Preporučujem.</p>
+                    </article>
+                    <article class="g-review-card reveal-up" style="transition-delay: 0.05s" role="listitem">
+                        <div class="g-review-head">
+                            <div class="g-avatar g-avatar--2" aria-hidden="true">AS</div>
+                            <div class="g-profile">
+                                <span class="g-name">Ana Stefanović</span>
+                                <span class="g-badge">Prva recenzija</span>
+                            </div>
+                        </div>
+                        <div class="g-stars" aria-label="ocena, 5 od 5 zvezdica" title="5/5">
+                            <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span>
+                        </div>
+                        <p class="g-text">Jasna komunikacija, rokovi ispoštovani, dizajn tačno onakav kako smo zamislili. Tim zna šta radi.</p>
+                    </article>
+                    <article class="g-review-card reveal-up" style="transition-delay: 0.1s" role="listitem">
+                        <div class="g-review-head">
+                            <div class="g-avatar g-avatar--3" aria-hidden="true">FN</div>
+                            <div class="g-profile">
+                                <span class="g-name">Filip Nikolić</span>
+                                <span class="g-badge">5 recenzija</span>
+                            </div>
+                        </div>
+                        <div class="g-stars" aria-label="ocena, 4 od 5 zvezdica" title="4/5">
+                            <span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star" aria-hidden="true">★</span><span class="g-star g-star--empty" aria-hidden="true">☆</span>
+                        </div>
+                        <p class="g-text">Dugo tražili pouzdanog partnera za web i SEO. Sada imamo merni setup i jasan rast. Vredi svake investicije.</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -256,36 +288,39 @@
             </div>
         </section>
 
-        <!-- Section 7: Contact & Map -->
-        <section id="contact" class="section">
+        <!-- Section 7: Contact (ista struktura kao kontakt.html) -->
+        <section id="contact" class="section contact-section">
             <div class="container">
                 <div class="grid-2">
-                    <div class="contact-form-container reveal-left">
-                        <h2>Kontaktiraj nas</h2>
-                        <form id="contact-form">
-                            <div class="input-group">
-                                <label for="name">Ime i Prezime</label>
-                                <input type="text" id="name" required placeholder="Vaše ime...">
+                    <div class="contact-info reveal-up">
+                        <h2>Bićemo u kontaktu <br><span class="accent-text">brže nego što mislite.</span></h2>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <h4>Email</h4>
+                                <p><a href="mailto:office@neonlabs.rs">office@neonlabs.rs</a></p>
                             </div>
-                            <div class="input-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" required placeholder="vash@email.com">
-                            </div>
-                            <div class="input-group">
-                                <label for="message">Poruka</label>
-                                <textarea id="message" rows="5" required placeholder="Kako možemo da vam pomognemo?"></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary full-width">Pošalji Poruku</button>
-                        </form>
-                    </div>
-                    <div class="map-container reveal-right">
-                        <div class="map-placeholder">
-                            <div class="map-overlay">
-                                <h3>Naša Lokacija</h3>
+                            <div class="contact-item">
+                                <h4>Lokacija</h4>
                                 <p>Beograd, Srbija</p>
-                                <div class="location-dot"></div>
                             </div>
                         </div>
+                    </div>
+                    <div class="contact-form-container reveal-up">
+                        <form id="contact-form">
+                            <div class="input-group">
+                                <label for="index-contact-name">Ime i Prezime</label>
+                                <input type="text" id="index-contact-name" name="name" required placeholder="Vaše ime..." autocomplete="name">
+                            </div>
+                            <div class="input-group">
+                                <label for="index-contact-email">Email Adresa</label>
+                                <input type="email" id="index-contact-email" name="email" required placeholder="vash@email.com" autocomplete="email">
+                            </div>
+                            <div class="input-group">
+                                <label for="index-contact-message">Poruka</label>
+                                <textarea id="index-contact-message" name="message" rows="5" required placeholder="Opišite vaš projekat ili izazov..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary full-width">Pošalji Upit</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -1000,6 +1000,11 @@ img {
     gap: 24px;
 }
 
+/* Kartice su uvek "prisutne" — animacija ide samo na transform, ne na opacity */
+#portfolio .portfolio-item {
+    opacity: 1;
+}
+
 .item-visual {
     height: 280px;
     border-radius: 20px;
@@ -1018,6 +1023,113 @@ img {
 
 .item-info h3 { font-size: 1.5rem; margin-bottom: 8px; }
 .item-info p { color: var(--text-dim); }
+
+/* Recenzije u stilu Google profil + ime + zvezdice */
+.testimonial-section {
+    background: var(--bg-color, #0a0a0b);
+}
+
+.google-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.g-review-card {
+    background: #161618;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem 1.35rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    text-align: left;
+}
+
+.g-review-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.g-avatar {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #ff8359 0%, #c94b7c 100%);
+    letter-spacing: 0.02em;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.g-avatar--2 {
+    background: linear-gradient(135deg, #5b7cfa 0%, #8b5cf6 100%);
+}
+
+.g-avatar--3 {
+    background: linear-gradient(135deg, #0d9488 0%, #10b981 100%);
+}
+
+.g-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.g-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f3f3f3;
+    line-height: 1.25;
+}
+
+.g-badge {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+.g-stars {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-bottom: 0.7rem;
+    line-height: 1;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.g-stars .g-star {
+    color: #fbbc04;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.g-stars .g-star--empty {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.05rem;
+}
+
+.g-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #d1d5db;
+}
+
+@media (max-width: 900px) {
+    .google-reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Stats */
 .about-flex {
@@ -1050,9 +1162,58 @@ img {
 
 .stat-item p { margin-bottom: 0; font-size: 1rem; }
 
+/* Contact — zajedno za index #contact i kontakt.html */
+.contact-section .grid-2 {
+    align-items: start;
+    gap: clamp(2rem, 5vw, 60px);
+}
+
+.contact-info h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.contact-details {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.contact-item h4 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-dim, #8b8b90);
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #fff;
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 131, 89, 0.35);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-item a:hover {
+    color: #ff8359;
+    border-color: #ff8359;
+}
+
 /* Contact & Map */
 .contact-form-container {
-    padding: 60px;
+    padding: clamp(1.5rem, 4vw, 3.75rem);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .input-group {
@@ -1071,6 +1232,8 @@ img {
 
 .input-group input, .input-group textarea {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     padding: 1.25rem;
@@ -1078,6 +1241,7 @@ img {
     border-radius: 12px;
     outline: none;
     transition: var(--transition);
+    font-size: 1rem;
 }
 
 .input-group input:focus, .input-group textarea:focus {
@@ -1285,6 +1449,19 @@ img {
     .hero-content-left h1 { font-size: 3.5rem; }
     .hero-btns { flex-direction: column; width: 100%; }
     .hero-btns .hero-btn, .hero-btns .hero-btn-outline { width: 100%; }
+
+    .contact-section .grid-2 {
+        gap: 2rem;
+    }
+
+    .contact-form-container {
+        border-radius: 20px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        font-size: 16px;
+    }
 }
 
 /* Floating Contact Stack - Right Side */
