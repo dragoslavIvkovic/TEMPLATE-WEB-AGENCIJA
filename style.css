@@ -2242,3 +2242,97 @@ html.custom-cursor--enabled .custom-cursor--visible {
         gap: 2rem;
     }
 }
+
+/* Service Text Blocks (Text-only design) */
+.service-text-grid, .services-text-grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.service-text-block, .sv3-text-block {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.service-text-block:hover, .sv3-text-block:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+}
+
+.service-text-block h3, .sv3-text-block h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--accent-primary);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.service-text-block p, .sv3-text-block p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.text-link {
+    display: inline-block;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.text-link:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .service-text-grid, .services-text-grid-home {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Service Detail Pages (Extended Text Layout) */
+.service-detail-text {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-detail-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.service-detail-text h3 {
+    font-size: 1.8rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--accent-primary);
+}
+
+.service-detail-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 25px;
+}
+
+.cta-mini {
+    margin-top: 60px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cta-mini p {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
