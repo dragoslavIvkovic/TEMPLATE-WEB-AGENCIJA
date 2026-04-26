@@ -804,7 +804,22 @@ img {
 
 .nav-list a.active {
     color: var(--accent-primary);
-    font-weight: 700;
+    position: relative;
+}
+
+.nav-list a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+}
+
+.nav-list a.btn-secondary.active::after {
+    display: none;
 }
 
 /* Bento Graphic Props Fixes */
@@ -2146,5 +2161,84 @@ html.custom-cursor--enabled .custom-cursor--visible {
     100% {
         transform: translate(-50%, -50%) scale(2.4);
         opacity: 0;
+    }
+}
+
+/* Process Steps & FAQ */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.step-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.step-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    opacity: 0.1;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.faq-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    margin-top: 1rem;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+@media (max-width: 992px) {
+    .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }

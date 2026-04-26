@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranica nije pronađena | NEON_LABS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .error-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-code {
+            font-size: 10rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <main class="error-page">
+        <div class="error-code">404</div>
+        <h1>Ups! Izgleda da ste se izgubili.</h1>
+        <p style="margin: 1.5rem 0 2.5rem; color: var(--text-dim); max-width: 500px;">
+            Stranica koju tražite ne postoji ili je premeštena na drugu lokaciju.
+        </p>
+        <a href="index.html" class="btn-primary">Vrati se na početnu</a>
+    </main>
+</body>
+</html>

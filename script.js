@@ -652,3 +652,27 @@ if (document.readyState === 'loading') {
 } else {
     initNeonPage();
 }
+
+// FAQ Accordion
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close other items
+            faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+            
+            // Toggle current
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+}
+
+// Add initFAQ to existing initNeonPage or window.onload
+document.addEventListener('DOMContentLoaded', () => {
+    initFAQ();
+});
