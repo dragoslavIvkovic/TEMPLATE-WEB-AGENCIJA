@@ -2,7 +2,7 @@
  * Javna inicijalizacija nakon učitavanja ili nakon klijentske navigacije (SPA-lite).
  * Poziva se u DOMContentLoaded, posle zamenjivanog body-ja, i sync ako je DOM već spreman.
  */
-function initNeonPage() {
+function initWebPlacePage() {
     if (window.__NEON_AC) window.__NEON_AC.abort();
     window.__NEON_AC = new AbortController();
     const ac = window.__NEON_AC.signal;
@@ -157,9 +157,9 @@ function initNeonPage() {
         gsap.registerPlugin(ScrollTrigger);
     }
 
-    const skipPreloader = sessionStorage.getItem('neon_spa') === '1';
+    const skipPreloader = sessionStorage.getItem('webplace_spa') === '1';
     if (skipPreloader) {
-        sessionStorage.removeItem('neon_spa');
+        sessionStorage.removeItem('webplace_spa');
     }
 
     const preloader = document.getElementById('preloader');
@@ -553,11 +553,11 @@ async function ensureGsapForDoc(doc) {
     }
 }
 
-let neonNavInFlight = false;
+let webplaceNavInFlight = false;
 
-async function neonLoadPage(absoluteUrl, { push, scrollTop } = { push: true, scrollTop: true }) {
-    if (neonNavInFlight) return;
-    neonNavInFlight = true;
+async function webplaceLoadPage(absoluteUrl, { push, scrollTop } = { push: true, scrollTop: true }) {
+    if (webplaceNavInFlight) return;
+    webplaceNavInFlight = true;
     try {
         const res = await fetch(absoluteUrl, { credentials: 'same-origin' });
         if (!res.ok) throw new Error('fetch');
@@ -589,24 +589,24 @@ async function neonLoadPage(absoluteUrl, { push, scrollTop } = { push: true, scr
 
         await ensureGsapForDoc(doc);
 
-        sessionStorage.setItem('neon_spa', '1');
+        sessionStorage.setItem('webplace_spa', '1');
         if (push) {
             const u = new URL(absoluteUrl);
-            history.pushState({ neon: 1 }, '', u.pathname + u.search + u.hash);
+            history.pushState({ webplace: 1 }, '', u.pathname + u.search + u.hash);
         }
         if (scrollTop) window.scrollTo(0, 0);
 
         requestAnimationFrame(() => {
-            initNeonPage();
+            initWebPlacePage();
         });
     } catch (err) {
         window.location.assign(absoluteUrl);
     } finally {
-        neonNavInFlight = false;
+        webplaceNavInFlight = false;
     }
 }
 
-function neonOnDocClick(e) {
+function webplaceOnDocClick(e) {
     if (e.defaultPrevented || e.button !== 0) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest('a[href]');
@@ -648,21 +648,21 @@ function neonOnDocClick(e) {
     if (!/\.html$/i.test(url.pathname)) return;
 
     e.preventDefault();
-    void neonLoadPage(a.href, { push: true, scrollTop: true });
+    void webplaceLoadPage(a.href, { push: true, scrollTop: true });
 }
 
 if (!window.__NEON_SPA) {
     window.__NEON_SPA = true;
-    document.addEventListener('click', neonOnDocClick, true);
+    document.addEventListener('click', webplaceOnDocClick, true);
     window.addEventListener('popstate', () => {
-        void neonLoadPage(location.href, { push: false, scrollTop: true });
+        void webplaceLoadPage(location.href, { push: false, scrollTop: true });
     });
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNeonPage, { once: true });
+    document.addEventListener('DOMContentLoaded', initWebPlacePage, { once: true });
 } else {
-    initNeonPage();
+    initWebPlacePage();
 }
 
 // FAQ Accordion
@@ -684,7 +684,7 @@ function initFAQ() {
     });
 }
 
-// Add initFAQ to existing initNeonPage or window.onload
+// Add initFAQ to existing initWebPlacePage or window.onload
 document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
 });
