@@ -1019,16 +1019,9 @@ img {
     border-radius: 20px;
     margin-bottom: 2rem;
     overflow: hidden;
+    position: relative;
+    background: #0d0d0f;
 }
-
-.abstract-card {
-    width: 100%; height: 100%;
-    opacity: 0.15;
-}
-
-.abstract-card.blue { background: radial-gradient(circle at center, var(--accent-primary), transparent); }
-.abstract-card.purple { background: radial-gradient(circle at center, var(--accent-purple), transparent); }
-.abstract-card.gold { background: radial-gradient(circle at center, #FFD700, transparent); }
 
 /* Mini pregled uživo (iframe) — umanjen prikaz gornjeg dela stranice */
 .portfolio-item--link {
@@ -1126,7 +1119,6 @@ img {
     margin-bottom: 2rem;
     background: #0d0d0f;
 }
-
 .embed-site-preview {
     position: relative;
     width: 100%;
