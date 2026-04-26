@@ -3,6 +3,9 @@
 <head>
     <link rel="canonical" href="https://neonlabs.rs/index.html">
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEON_LABS | Digitalna Agencija za Premium Web & App Rešenja</title>
     <meta name="description" content="NEON_LABS je vodeća digitalna agencija specijalizovana za razvoj visokotehnoloških web platformi, mobilnih aplikacija i stratešku SEO optimizaciju. Inženjering vizije bez kompromisa.">
@@ -26,7 +29,13 @@
     <meta property="twitter:description" content="Specijalizovani za razvoj visokotehnoloških web platformi i mobilnih aplikacija.">
 
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        #preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:#0A0A0B;z-index:9999;display:flex;align-items:center;justify-content:center}
+        .loader-content{text-align:center}
+        .loader-bar{width:0;height:1px;background:#22D3EE;margin-top:20px}
+        .logo-text{font-family:sans-serif;font-weight:900;letter-spacing:.2rem;font-size:1.5rem;color:#fff}
+    </style>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -146,7 +155,7 @@
         <!-- Section 1: Hero -->
         <section id="hero" class="hero-section">
             <div class="hero-bg-wrapper">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop&fm=webp" alt="Background" class="hero-bg-img" fetchpriority="high" decoding="async">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop&fm=webp" alt="Background" class="hero-bg-img" fetchpriority="high" decoding="async" width="1600" height="900">
                 <div class="hero-overlay"></div>
             </div>
             <div class="container hero-content-left">
@@ -410,7 +419,7 @@
                 <button class="back-to-options" id="back-to-options-btn">← Nazad</button>
                 <h3>Pošaljite poruku</h3>
                 <p>Tu smo da odgovorimo na sva vaša pitanja.</p>
-                <iframe width="640" height="900" title="Kontakt forma" src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAa__bZH0ChUMUZRUjVMU1Q4SVZDWDU5WjZSTlVIQlFaUi4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 100%; max-width: 640px" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+                <iframe width="640" height="900" title="Kontakt forma" data-src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAa__bZH0ChUMUZRUjVMU1Q4SVZDWDU5WjZSTlVIQlFaUi4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 100%; max-width: 640px" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
             </div>
 
             <button class="close-modal-btn" id="close-contact-modal">Zatvori</button>

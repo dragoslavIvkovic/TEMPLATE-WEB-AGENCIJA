@@ -2,10 +2,13 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hosting | NEON_LABS</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 </head>
 <body class="subpage">
     <header id="header" class="scrolled">
@@ -56,9 +59,71 @@
     <main>
         <section class="section page-hero">
             <div class="container">
-                <span class="subtitle">Usluga</span>
-                <h1>Siguran <span class="gradient-text">Hosting</span></h1>
-                <p class="hero-subtext">Obezbeđujemo stabilan, brz i siguran hosting koji čini da tvoj sajt radi bez prekida.</p>
+                <span class="subtitle">Premium Infrastruktura</span>
+                <h1>Munjevit <span class="gradient-text">Hosting</span></h1>
+                <p class="hero-subtext">Vaš sajt zaslužuje najbolje. Obezbeđujemo stabilnost, brzinu i sigurnost na enterprise nivou.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container grid-2">
+                <div class="text-content reveal-up">
+                    <h2>Performanse bez kompromisa</h2>
+                    <p>U svetu gde svaka sekunda učitavanja utiče na prodaju, ne prepuštamo ništa slučaju. Naši serveri su optimizovani specijalno za moderne web aplikacije i e-commerce platforme, koristeći najnovije NVMe diskove i LiteSpeed tehnologiju.</p>
+                    <p>99.9% uptime garancija nije samo obećanje — to je standard.</p>
+                </div>
+                <div class="visual-content reveal-up">
+                    <div class="stat-grid-simple">
+                        <div class="stat-item">
+                            <span class="number" data-target="99">0</span>.9%
+                            <p>Zagarantovan Uptime</p>
+                        </div>
+                        <div class="stat-item">
+                            <span class="number" data-target="100">0</span>%
+                            <p>SSD/NVMe Storage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--card-bg);">
+            <div class="container">
+                <div class="section-header center reveal-up">
+                    <span class="subtitle">Sigurnost i Brzina</span>
+                    <h2>Karakteristike Našeg Hostinga</h2>
+                </div>
+                <div class="services-grid-new">
+                    <div class="sv3-card reveal-up">
+                        <div class="sv3-content">
+                            <h3>Dnevni Backup</h3>
+                            <p>Vaši podaci su sigurni. Automatski čuvamo kopije vašeg sajta svakog dana, tako da uvek možete da se vratite korak unazad.</p>
+                        </div>
+                    </div>
+                    <div class="sv3-card reveal-up">
+                        <div class="sv3-content">
+                            <h3>SSL Sertifikati</h3>
+                            <p>Svi naši hosting paketi uključuju besplatne SSL sertifikate kako bi vaš sajt bio siguran i Google-friendly.</p>
+                        </div>
+                    </div>
+                    <div class="sv3-card reveal-up">
+                        <div class="sv3-content">
+                            <h3>Lokalna Podrška</h3>
+                            <p>Naš tim stručnjaka je tu 24/7 da reši bilo koji tehnički izazov, bez čekanja na tikete i duge redove.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt CTA -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-box reveal-up" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple)); padding: 60px; border-radius: 30px; text-align: center; color: #fff;">
+                    <h2 style="color: #fff; margin-bottom: 20px;">Tražite pouzdan dom za svoj sajt?</h2>
+                    <p style="margin-bottom: 30px; opacity: 0.9;">Hajde da obezbedimo brzinu i sigurnost koju vaš biznis zaslužuje.</p>
+                    <button class="btn-primary" id="open-contact-modal" style="background: #fff; color: #000; border: none;">Zatražite Ponudu</button>
+                </div>
             </div>
         </section>
     </main>
@@ -120,6 +185,33 @@
         <a href="kontakt.html" class="contact-icon email" aria-label="Kontakt">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
         </a>
+    </div>
+    <div class="contact-modal-overlay" id="contact-modal-overlay">
+        <div class="contact-modal-content">
+            <!-- View 1: Options -->
+            <div id="modal-view-options" class="modal-view active">
+                <h3>Započnimo razgovor</h3>
+                <p>Izaberite način na koji želite da nas kontaktirate.</p>
+                <div class="modal-options">
+                    <a href="tel:+381111234567" class="modal-opt-btn highlight">
+                        <span>Pozovite nas odmah</span>
+                    </a>
+                    <button class="modal-opt-btn" id="show-contact-form-btn">
+                        <span>Pošaljite upit mejlom</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- View 2: Form -->
+            <div id="modal-view-form" class="modal-view">
+                <button class="back-to-options" id="back-to-options-btn">← Nazad</button>
+                <h3>Pošaljite poruku</h3>
+                <p>Tu smo da odgovorimo na sva vaša pitanja.</p>
+                <iframe width="640" height="900" title="Kontakt forma" data-src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAa__bZH0ChUMUZRUjVMU1Q4SVZDWDU5WjZSTlVIQlFaUi4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 100%; max-width: 640px" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            </div>
+
+            <button class="close-modal-btn" id="close-contact-modal">Zatvori</button>
+        </div>
     </div>
     <script src="script.js" defer></script>
 </body>

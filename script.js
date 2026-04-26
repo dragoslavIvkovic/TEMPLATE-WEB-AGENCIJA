@@ -171,30 +171,29 @@ function initNeonPage() {
     } else if (preloader && loaderBar) {
         let progress = 0;
         window.__NEON_PRELOADER_INT = setInterval(() => {
-            progress += Math.random() * 30;
+            progress += 20 + Math.random() * 35;
             if (progress > 100) progress = 100;
             loaderBar.style.width = progress + '%';
 
             if (progress === 100) {
                 clearInterval(window.__NEON_PRELOADER_INT);
                 window.__NEON_PRELOADER_INT = 0;
-                setTimeout(() => {
-                    if (typeof gsap !== 'undefined') {
-                        gsap.to(preloader, {
-                            opacity: 0,
-                            duration: 0.8,
-                            onComplete: () => {
-                                preloader.style.display = 'none';
-                                initAnimations();
-                            }
-                        });
-                    } else {
-                        preloader.style.display = 'none';
-                        initAnimations();
-                    }
-                }, 500);
+                if (typeof gsap !== 'undefined') {
+                    preloader.style.pointerEvents = 'none';
+                    gsap.to(preloader, {
+                        opacity: 0,
+                        duration: 0.35,
+                        onComplete: () => {
+                            preloader.style.display = 'none';
+                            initAnimations();
+                        }
+                    });
+                } else {
+                    preloader.style.display = 'none';
+                    initAnimations();
+                }
             }
-        }, 150);
+        }, 80);
     } else {
         if (preloader) preloader.remove();
         initAnimations();
@@ -301,14 +300,16 @@ function initNeonPage() {
                 gsap.from(el, {
                     scrollTrigger: {
                         trigger: el,
-                        start: 'top 85%',
+                        start: 'top 92%',
                         toggleActions: 'play none none none'
                     },
                     x: item.x || 0,
                     y: item.y || 0,
                     opacity: 0,
-                    duration: 1.2,
-                    ease: 'power3.out'
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    onStart: () => { el.style.willChange = 'transform, opacity'; },
+                    onComplete: () => { el.style.willChange = 'auto'; }
                 });
             });
         });
@@ -420,12 +421,22 @@ function initNeonPage() {
     }
 
     if (openContactBtn && contactModal) {
+        const loadContactIframe = () => {
+            const iframe = contactModal.querySelector('iframe[data-src]');
+            if (iframe && !iframe.getAttribute('src')) {
+                iframe.setAttribute('src', iframe.getAttribute('data-src'));
+            }
+        };
+
         openContactBtn.addEventListener('click', () => {
             contactModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             if (viewOptions && viewForm) {
                 viewOptions.classList.remove('active');
                 viewForm.classList.add('active');
+                loadContactIframe();
+            } else {
+                loadContactIframe();
             }
         }, { signal: ac });
 
@@ -440,6 +451,7 @@ function initNeonPage() {
             showFormBtn.addEventListener('click', () => {
                 viewOptions.classList.remove('active');
                 viewForm.classList.add('active');
+                loadContactIframe();
             }, { signal: ac });
         }
 
