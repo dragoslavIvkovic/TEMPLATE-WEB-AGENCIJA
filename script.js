@@ -399,16 +399,6 @@ function initWebPlacePage() {
     }
 
     if (openContactBtn && contactModal) {
-        const loadTallyIframe = () => {
-            const iframe = contactModal.querySelector('iframe[data-tally-src]');
-            if (iframe && !iframe.getAttribute('src')) {
-                iframe.setAttribute('src', iframe.getAttribute('data-tally-src'));
-                // Ensure Tally script loads embeds
-                if (typeof Tally !== 'undefined') {
-                    Tally.loadEmbeds();
-                }
-            }
-        };
 
         openContactBtn.addEventListener('click', () => {
             contactModal.classList.add('active');
@@ -416,9 +406,6 @@ function initWebPlacePage() {
             if (viewOptions && viewForm) {
                 viewOptions.classList.remove('active');
                 viewForm.classList.add('active');
-                loadTallyIframe();
-            } else {
-                loadTallyIframe();
             }
         }, { signal: ac });
 
@@ -434,7 +421,6 @@ function initWebPlacePage() {
             showFormBtn.addEventListener('click', () => {
                 viewOptions.classList.remove('active');
                 viewForm.classList.add('active');
-                loadTallyIframe();
             }, { signal: ac });
         }
 

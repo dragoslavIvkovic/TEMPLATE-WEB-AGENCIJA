@@ -1370,17 +1370,26 @@ img {
     box-sizing: border-box;
 }
 
-.contact-form-container iframe,
-#modal-view-form iframe,
-.office-form-standalone iframe {
-    max-width: 100%;
-    width: 100% !important;
-    display: block;
+.contact-form-container,
+.office-form-standalone,
+#modal-view-form {
     background: #ffffff;
     border-radius: 28px;
     padding: clamp(1.5rem, 5vw, 3rem);
-    box-sizing: border-box;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin: 2rem auto;
+    max-width: 640px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form-container iframe,
+.office-form-standalone iframe,
+#modal-view-form iframe {
+    max-width: 100%;
+    width: 100% !important;
+    display: block;
+    background: transparent;
     border: none;
     margin: 0 auto;
     min-height: 500px;
@@ -1391,12 +1400,6 @@ img {
     flex-direction: column;
     gap: clamp(2rem, 5vw, 3.5rem);
     max-width: 900px;
-    margin: 0 auto;
-}
-
-.office-form-standalone {
-    width: 100%;
-    max-width: 640px;
     margin: 0 auto;
 }
 
