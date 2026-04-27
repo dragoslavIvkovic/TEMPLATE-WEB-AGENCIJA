@@ -355,29 +355,7 @@ function initWebPlacePage() {
         }
     }
 
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
 
-            btn.innerText = 'Šaljem...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                btn.innerText = 'Poruka Poslata!';
-                btn.style.background = '#00ff88';
-                contactForm.reset();
-
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-            }, 1500);
-        }, { signal: ac });
-    }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -421,10 +399,14 @@ function initWebPlacePage() {
     }
 
     if (openContactBtn && contactModal) {
-        const loadContactIframe = () => {
-            const iframe = contactModal.querySelector('iframe[data-src]');
+        const loadTallyIframe = () => {
+            const iframe = contactModal.querySelector('iframe[data-tally-src]');
             if (iframe && !iframe.getAttribute('src')) {
-                iframe.setAttribute('src', iframe.getAttribute('data-src'));
+                iframe.setAttribute('src', iframe.getAttribute('data-tally-src'));
+                // Ensure Tally script loads embeds
+                if (typeof Tally !== 'undefined') {
+                    Tally.loadEmbeds();
+                }
             }
         };
 
@@ -434,11 +416,12 @@ function initWebPlacePage() {
             if (viewOptions && viewForm) {
                 viewOptions.classList.remove('active');
                 viewForm.classList.add('active');
-                loadContactIframe();
+                loadTallyIframe();
             } else {
-                loadContactIframe();
+                loadTallyIframe();
             }
         }, { signal: ac });
+
 
         const closeModal = () => {
             contactModal.classList.remove('active');
@@ -451,9 +434,11 @@ function initWebPlacePage() {
             showFormBtn.addEventListener('click', () => {
                 viewOptions.classList.remove('active');
                 viewForm.classList.add('active');
-                loadContactIframe();
+                loadTallyIframe();
             }, { signal: ac });
         }
+
+
 
         if (backToOptionsBtn) {
             backToOptionsBtn.addEventListener('click', () => {
@@ -475,31 +460,7 @@ function initWebPlacePage() {
         }, { signal: ac });
     }
 
-    const modalForm = document.getElementById('modal-contact-form');
-    if (modalForm && contactModal) {
-        modalForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = modalForm.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = 'Slanje...';
-            btn.disabled = true;
 
-            setTimeout(() => {
-                btn.textContent = 'Poruka poslata!';
-                btn.style.background = '#10b981';
-                modalForm.reset();
-                setTimeout(() => {
-                    contactModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.style.background = '';
-                        btn.disabled = false;
-                    }, 500);
-                }, 1500);
-            }, 1500);
-        }, { signal: ac });
-    }
 
     const currentYearEl = document.getElementById('current-year');
     if (currentYearEl) {
