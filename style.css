@@ -1385,14 +1385,17 @@ img {
 
 .contact-form-container iframe,
 .office-form-standalone iframe,
-#modal-view-form iframe {
+#modal-view-form iframe,
+.service-tally-embed iframe {
     max-width: 100%;
     width: 100% !important;
     display: block;
     background: transparent;
     border: none;
     margin: 0 auto;
-    min-height: 500px;
+    /* Tally dynamicHeight određuje visinu — veliki min-height pravi prazan prostor ispod */
+    min-height: 220px;
+    border-radius: 14px;
 }
 
 .contact-page-stack {
@@ -1401,6 +1404,16 @@ img {
     gap: clamp(2rem, 5vw, 3.5rem);
     max-width: 900px;
     margin: 0 auto;
+}
+
+/* Kontakt stranica — samo Tally forma */
+.kontakt-page-tally-only {
+    padding-top: clamp(100px, 16vh, 180px);
+    padding-bottom: clamp(80px, 12vh, 120px);
+}
+
+.kontakt-page-tally-only .contact-form-container {
+    margin-top: 0;
 }
 
 /* Form Styles */
@@ -1828,9 +1841,6 @@ img {
     overflow: visible;
 }
 
-#modal-view-form iframe {
-    min-height: 480px;
-}
 
 .contact-modal-content h3 {
     font-size: 1.8rem;
@@ -2373,4 +2383,30 @@ html.custom-cursor--enabled .custom-cursor--visible {
 .cta-mini p {
     margin-bottom: 20px;
     font-weight: 500;
+}
+
+/* Tally — jedna komponenta za sve stranice usluga (isti embed URL kao kontakt / modal) */
+.cta-mini.cta-mini--tally {
+    text-align: left;
+    /* spoljašnji razmak u odnosu na .service-detail-text; unutrašnji daje .service-tally-embed */
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.service-tally-embed {
+    width: 100%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.45);
+    /* Isti osećaj razmaka kao .contact-form-container — sadržaj u iframe-u nije zalepljen za ivice */
+    padding: clamp(1.25rem, 4vw, 2rem) clamp(1.35rem, 4.5vw, 2.25rem) clamp(1.5rem, 4.5vw, 2.25rem);
+    box-sizing: border-box;
+}
+
+.service-tally-cta {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
 }
