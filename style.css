@@ -1123,6 +1123,236 @@ img {
     border-radius: 32px;
 }
 
+/* Google Business Profile — sekcija (firme, zanatlije, majstori) */
+.gb-profile-section__subtitle {
+    color: #ff8359;
+}
+
+.gb-profile-section .section-header.center {
+    max-width: min(42rem, 100%);
+    margin-bottom: var(--space-10);
+}
+
+/* Sav sadržaj sekcije u dve kartice — bez slobodnog teksta ispod naslova */
+.gb-profile-section__cards {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Dve kartice; na širem ekranu CSS subgrid — isti redovi levo/desno (čipovi i linkovi poravnati) */
+.gb-profile-cards--aligned {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 4vw, 2rem);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gb-profile-card {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.875rem, 2.5vw, 1.25rem);
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    text-align: left;
+    border-radius: 22px;
+    padding: clamp(1.125rem, 4vw + 0.35rem, 2rem);
+    background: linear-gradient(
+        158deg,
+        rgba(255, 131, 89, 0.09) 0%,
+        rgba(22, 22, 24, 0.98) 52%,
+        var(--card-bg) 100%
+    );
+    border: 1px solid rgba(255, 131, 89, 0.22);
+    box-shadow:
+        0 28px 56px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.gb-profile-card > :not(.gb-profile-card__glow) {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    @supports (grid-template-rows: subgrid) {
+        .gb-profile-cards--aligned {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: auto auto auto 1fr auto auto;
+            column-gap: clamp(1.25rem, 3vw, 2rem);
+            row-gap: 0;
+            align-items: stretch;
+        }
+
+        .gb-profile-cards--aligned > .gb-profile-card {
+            display: grid;
+            grid-template-rows: subgrid;
+            grid-row: 1 / -1;
+            min-height: 0;
+            row-gap: clamp(0.65rem, 1.8vw, 1rem);
+        }
+
+        .gb-profile-cards--aligned > .gb-profile-card:first-child {
+            grid-column: 1;
+        }
+
+        .gb-profile-cards--aligned > .gb-profile-card:nth-child(2) {
+            grid-column: 2;
+        }
+    }
+
+    @supports not (grid-template-rows: subgrid) {
+        .gb-profile-cards--aligned {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(1.25rem, 3vw, 2rem);
+            align-items: stretch;
+        }
+
+        .gb-profile-cards--aligned > .gb-profile-card {
+            height: 100%;
+        }
+    }
+}
+
+.gb-profile-card--alt {
+    border-color: rgba(34, 211, 238, 0.22);
+    background: linear-gradient(
+        152deg,
+        rgba(34, 211, 238, 0.08) 0%,
+        rgba(22, 22, 24, 0.98) 55%,
+        var(--card-bg) 100%
+    );
+}
+
+.gb-profile-card--alt .gb-profile-card__glow {
+    background: radial-gradient(
+        ellipse 90% 60% at 0% -5%,
+        rgba(34, 211, 238, 0.16),
+        transparent 52%
+    );
+}
+
+.gb-profile-card--alt .gb-profile-card__kicker {
+    color: #67e8f9;
+}
+
+.gb-profile-card__glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(
+        ellipse 90% 60% at 100% -5%,
+        rgba(255, 131, 89, 0.18),
+        transparent 52%
+    );
+}
+
+.gb-profile-card__kicker {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ff8359;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.gb-profile-card__title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.2rem, 2.2vw + 0.75rem, 1.45rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin: 0;
+}
+
+.gb-profile-card__text {
+    font-size: clamp(0.9375rem, 0.5vw + 0.85rem, 1rem);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78);
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    margin: 0;
+}
+
+.gb-profile-card__list.check-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-self: stretch;
+    min-height: 0;
+}
+
+.gb-profile-card__list.check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin: 0 0 0.625rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.gb-profile-card__list.check-list li:last-child {
+    margin-bottom: 0;
+}
+
+.gb-profile-card__list.check-list li::before {
+    flex-shrink: 0;
+    margin-top: 0.45em;
+}
+
+.gb-profile-card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.gb-profile-card__chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.gb-profile-card__links {
+    margin: 0;
+    padding-top: clamp(1rem, 3vw, 1.35rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gb-profile-card__links .text-link {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.35rem 0;
+    line-height: 1.45;
+}
+
+.gb-profile-card__link-secondary {
+    opacity: 0.92;
+}
+
 /* Portfolio */
 .section-header.center {
     text-align: center;
@@ -2540,6 +2770,166 @@ html.custom-cursor--enabled .custom-cursor--visible {
     .faq-layout {
         grid-template-columns: 1fr;
         gap: var(--space-8);
+    }
+}
+
+/* Početna (#services) — dve kartice: slika + kratki tekst, poravnate visine */
+.services-showcase {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3.5vw, 2.5rem);
+    align-items: stretch;
+}
+
+.service-showcase-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 100%;
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+    transition:
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.5s ease,
+        border-color 0.35s ease;
+}
+
+.service-showcase-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 131, 89, 0.35);
+    box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 131, 89, 0.12);
+}
+
+.service-showcase-card--alt:hover {
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow:
+        0 28px 64px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(34, 211, 238, 0.12);
+}
+
+.service-showcase-card__visual {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #0c0c0e;
+}
+
+.service-showcase-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-showcase-card:hover .service-showcase-card__img {
+    transform: scale(1.08);
+}
+
+.service-showcase-card__shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 42%,
+        rgba(255, 255, 255, 0.14) 50%,
+        transparent 58%,
+        transparent 100%
+    );
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0.85;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-showcase-card:hover .service-showcase-card__shine {
+    transform: translateX(120%) skewX(-12deg);
+}
+
+.service-showcase-card__accent {
+    height: 3px;
+    margin: 0;
+    background: linear-gradient(90deg, #ff8359, #22d3ee);
+    transform: scaleX(0.28);
+    transform-origin: left center;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-showcase-card__accent--alt {
+    transform-origin: right center;
+    background: linear-gradient(90deg, #22d3ee, #ff8359);
+}
+
+.service-showcase-card:hover .service-showcase-card__accent {
+    transform: scaleX(1);
+}
+
+.service-showcase-card__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.85rem) clamp(1.5rem, 3.5vw, 2rem);
+    gap: 0.75rem;
+}
+
+.service-showcase-card__body h3 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.35rem, 2.4vw + 0.6rem, 1.65rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--accent-primary);
+    letter-spacing: -0.02em;
+}
+
+.service-showcase-card__body p {
+    margin: 0;
+    flex: 1 1 auto;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    max-width: 38rem;
+}
+
+.service-showcase-card__body .text-link {
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 900px) {
+    .services-showcase {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-showcase-card,
+    .service-showcase-card__img,
+    .service-showcase-card__shine,
+    .service-showcase-card__accent {
+        transition: none;
+    }
+
+    .service-showcase-card:hover {
+        transform: none;
+    }
+
+    .service-showcase-card:hover .service-showcase-card__img {
+        transform: scale(1.02);
+    }
+
+    .service-showcase-card:hover .service-showcase-card__shine {
+        transform: translateX(-120%) skewX(-12deg);
+    }
+
+    .service-showcase-card:hover .service-showcase-card__accent {
+        transform: scaleX(0.28);
     }
 }
 
