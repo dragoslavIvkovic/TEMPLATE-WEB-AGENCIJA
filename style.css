@@ -405,6 +405,11 @@ img {
     margin: 0;
 }
 
+/* Duga hero rečenica (jedan naslov) — bez prevelikih rem skala kao za 2 kraće slogane */
+.hero-text-wrapper.hero-text-wrapper--extended {
+    max-width: min(52rem, 100%);
+}
+
 .hero-subtitle {
     display: inline-block;
     color: #FF8359;
@@ -421,6 +426,14 @@ img {
     letter-spacing: -0.02em;
     margin-bottom: 2rem;
     color: #fff;
+}
+
+.hero-content-left h1.hero-title--long {
+    font-size: clamp(2rem, 3.35vw + 0.85rem, 3.125rem);
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-8);
 }
 
 .hero-content-left p {
@@ -1869,7 +1882,13 @@ img {
     .desktop-nav { display: none; }
     .mobile-nav-toggle { display: flex; }
     
-    .hero-content-left h1 { font-size: 4rem; }
+    .hero-content-left h1:not(.hero-title--long) {
+        font-size: 4rem;
+    }
+
+    .hero-content-left h1.hero-title--long {
+        font-size: clamp(1.85rem, 3.5vw + 0.65rem, 2.625rem);
+    }
     
     .grid-2 { 
         gap: var(--space-12);
@@ -1885,7 +1904,13 @@ img {
 
 @media (max-width: 768px) {
     .portfolio-grid { grid-template-columns: 1fr; }
-    .hero-content-left h1 { font-size: 3.5rem; }
+    .hero-content-left h1:not(.hero-title--long) { font-size: 3.5rem; }
+
+    .hero-content-left h1.hero-title--long {
+        font-size: clamp(1.45rem, 4.2vw + 0.55rem, 1.875rem);
+        line-height: 1.28;
+        margin-bottom: var(--space-6);
+    }
     .hero-btns { flex-direction: column; width: 100%; }
     .hero-btns .hero-btn, .hero-btns .hero-btn-outline { width: 100%; }
 
@@ -2153,6 +2178,30 @@ img {
     letter-spacing: 0.1em;
     cursor: pointer;
     text-decoration: underline;
+}
+
+/* Mobilni kontakt modal: samo manji vertikalni razmak u formi (ne dirati širinu / „desktop“ omotač kartice) */
+@media (max-width: 768px) {
+    .contact-modal-content #modal-view-form h3 {
+        margin-bottom: var(--space-2);
+        font-size: 1.5rem;
+    }
+
+    .contact-modal-content #modal-view-form > p {
+        margin-bottom: var(--space-4);
+        line-height: 1.45;
+    }
+
+    .contact-modal-content #modal-view-form .back-to-options {
+        margin-bottom: var(--space-3);
+    }
+
+    .contact-modal-content #modal-view-form {
+        padding-top: var(--space-4);
+        padding-bottom: var(--space-5);
+        padding-left: clamp(1.125rem, 4.5vw, 2rem);
+        padding-right: clamp(1.125rem, 4.5vw, 2rem);
+    }
 }
 
 
