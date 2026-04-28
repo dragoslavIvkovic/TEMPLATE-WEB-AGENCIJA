@@ -11,8 +11,37 @@
     --card-bg: #161618;
     --glass: rgba(255, 255, 255, 0.02);
     --glass-border: rgba(255, 255, 255, 0.05);
-    
-    /* Layout */
+
+    /*
+     * Razmaci (4px raster, rem)
+     * Koristiti ove tokene za nove stilove; postojeća pravila ćemo postepeno migrirati.
+     */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.25rem;  /* 20px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-8: 2rem;     /* 32px */
+    --space-10: 2.5rem;  /* 40px */
+    --space-12: 3rem;    /* 48px */
+    --space-14: 3.5rem;  /* 56px */
+    --space-16: 4rem;    /* 64px */
+    --space-20: 5rem;    /* 80px */
+    --space-24: 6rem;    /* 96px */
+    --space-30: 7.5rem;  /* 120px */
+    /* dopuna skale — česti layout gap-ovi */
+    --space-15: 3.75rem;   /* 60px — sekcije / grid-2 */
+    --space-7: 1.875rem;   /* 30px — footer linkovi, service cards */
+    --space-3-5: 0.9375rem; /* 15px — kompakt kolone */
+    --space-2-5: 0.625rem; /* 10px — mini gap (npr. mobilni floating row) */
+
+    /* Layout (glavni “kičma” sajta) */
+    --container-inline: var(--space-10);
+    --section-y: var(--space-30);
+    --page-hero-padding: 11.25rem 0 6.25rem;      /* ~180px 0 100px */
+    --page-hero-padding-sm: 8.75rem 0 3.75rem;     /* ~140px 0 60px — mobilni */
+
     --container-width: 1200px;
     --header-height: 90px;
     --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -82,11 +111,11 @@ img {
     width: 100%;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--container-inline);
 }
 
 .section {
-    padding: 120px 0;
+    padding: var(--section-y) 0;
     position: relative;
     z-index: 10;
 }
@@ -449,7 +478,7 @@ img {
 .grid-2 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 60px;
+    gap: var(--space-15);
     align-items: center;
 }
 
@@ -491,7 +520,7 @@ img {
 .check-list li {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--space-4);
     margin-bottom: 1.25rem;
     font-weight: 600;
     font-size: 1.05rem;
@@ -503,6 +532,10 @@ img {
     width: 6px; height: 6px;
     background: var(--accent-primary);
     border-radius: 50%;
+}
+
+.check-list.check-list--spaced-top {
+    margin-top: var(--space-8);
 }
 
 /* Navigation Dropdown */
@@ -558,8 +591,8 @@ img {
 .service-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 60px;
+    gap: var(--space-7);
+    margin-top: var(--space-15);
 }
 
 .service-card-v2 {
@@ -639,8 +672,8 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 420px;
-    gap: 32px;
-    margin-top: 60px;
+    gap: var(--space-8);
+    margin-top: var(--space-15);
 }
 
 .bento-card {
@@ -773,7 +806,7 @@ img {
 
 /* Footer - Redefined Professional */
 .footer {
-    padding: 120px 0 0;
+    padding: var(--section-y) 0 0;
     background: #050505;
     border-top: 1px solid var(--glass-border);
 }
@@ -781,7 +814,7 @@ img {
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 80px;
+    gap: var(--space-20);
     margin-bottom: 100px;
 }
 
@@ -822,7 +855,7 @@ img {
 .social-links {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--space-3-5);
 }
 
 .social-links a {
@@ -837,7 +870,7 @@ img {
 
 .footer-bottom {
     border-top: 1px solid var(--glass-border);
-    padding: 40px 0;
+    padding: var(--space-10) 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -852,7 +885,7 @@ img {
 
 .footer-legal {
     display: flex;
-    gap: 30px;
+    gap: var(--space-7);
 }
 
 .footer-legal a {
@@ -867,7 +900,7 @@ img {
 }
 
 .page-hero {
-    padding: 180px 0 100px;
+    padding: var(--page-hero-padding);
     background: linear-gradient(to bottom, #0d0d0f, var(--bg-color));
     text-align: center;
 }
@@ -952,7 +985,7 @@ img {
 
 .chart-bars {
     display: flex;
-    gap: 15px;
+    gap: var(--space-3-5);
     align-items: flex-end;
 }
 
@@ -969,7 +1002,7 @@ img {
 
 .skeleton-grid {
     display: flex;
-    gap: 10px;
+    gap: var(--space-2-5);
     margin-top: 20px;
 }
 
@@ -983,7 +1016,7 @@ img {
 .stat-grid-simple {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: var(--space-5);
 }
 
 .contact-info, .contact-form-container, .map-container { 
@@ -998,7 +1031,7 @@ img {
 
 @media (max-width: 768px) {
     .page-hero {
-        padding: 140px 0 60px;
+        padding: var(--page-hero-padding-sm);
     }
     .page-hero h1 {
         font-size: 3rem;
@@ -1008,7 +1041,7 @@ img {
 @media (max-width: 1024px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        gap: var(--space-15);
     }
 }
 
@@ -1022,11 +1055,11 @@ img {
     }
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: var(--space-10);
     }
     .footer-bottom {
         flex-direction: column;
-        gap: 20px;
+        gap: var(--space-5);
         text-align: center;
     }
 }
@@ -1096,7 +1129,7 @@ img {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: var(--space-6);
 }
 
 /* Kartice su uvek "prisutne" — animacija ide samo na transform, ne na opacity */
@@ -1253,11 +1286,98 @@ img {
 .item-info h3 { font-size: 1.5rem; margin-bottom: 8px; }
 .item-info p { color: var(--text-dim); }
 
+/* Pokretna traka usluga (iznad „Šta klijenti kažu”) */
+.services-marquee {
+    width: 100%;
+    margin: 0 0 clamp(2rem, 5vw, 3.75rem);
+    padding: 0.65rem 0;
+    overflow: hidden;
+    border-block: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.services-marquee__viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.services-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: services-marquee-shift 52s linear infinite;
+    will-change: transform;
+}
+
+.services-marquee__group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.35rem 1.5rem;
+    padding-right: 1.5rem;
+    flex-wrap: nowrap;
+}
+
+.services-marquee__word {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.72rem, 1.35vw, 0.9rem);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+.services-marquee__sep {
+    color: rgba(255, 255, 255, 0.22);
+    font-weight: 300;
+    font-size: 1rem;
+    user-select: none;
+}
+
+@keyframes services-marquee-shift {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .services-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 0.65rem;
+        width: 100%;
+        max-width: var(--container-width);
+        margin-inline: auto;
+        padding-inline: 40px;
+        box-sizing: border-box;
+    }
+
+    .services-marquee__group--dup {
+        display: none;
+    }
+
+    .services-marquee__group {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-marquee {
+        padding: 0.55rem 0;
+    }
+
+    .services-marquee__word {
+        letter-spacing: 0.1em;
+    }
+}
+
 /* Recenzije u stilu Google profil + ime + zvezdice */
 .google-reviews-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: var(--space-5);
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -1360,7 +1480,7 @@ img {
 .about-flex {
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    gap: var(--space-20);
     align-items: center;
 }
 
@@ -1369,7 +1489,7 @@ img {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: var(--space-6);
 }
 
 .stat-item {
@@ -1390,7 +1510,7 @@ img {
 /* Contact — kontakt stranica i sekcije sa .grid-2 */
 .contact-section .grid-2 {
     align-items: start;
-    gap: clamp(2rem, 5vw, 60px);
+    gap: clamp(var(--space-8), 5vw, var(--space-15));
 }
 
 .contact-info h2 {
@@ -1752,7 +1872,7 @@ img {
     .hero-content-left h1 { font-size: 4rem; }
     
     .grid-2 { 
-        gap: 50px;
+        gap: var(--space-12);
     }
     
     .text-content, .visual-content { grid-column: span 12; order: 1; }
@@ -1770,7 +1890,7 @@ img {
     .hero-btns .hero-btn, .hero-btns .hero-btn-outline { width: 100%; }
 
     .contact-section .grid-2 {
-        gap: 2rem;
+        gap: var(--space-8);
     }
 
     .contact-form-container {
@@ -1794,7 +1914,7 @@ img {
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--space-3-5);
 }
 
 .contact-icon {
@@ -1825,19 +1945,31 @@ img {
 
 @media (max-width: 768px) {
     .floating-contact-stack {
-        right: 15px;
-        gap: 10px;
+        top: auto;
+        bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: var(--space-2-5);
+        max-width: calc(100vw - 48px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        justify-content: center;
     }
     .contact-icon {
-        width: 50px;
-        height: 50px;
+        width: 48px;
+        height: 48px;
     }
     .contact-icon svg {
         width: 24px;
         height: 24px;
     }
-}
 
+    /* horizontalni red — bez horiz. pomeranja da ne žulja layout */
+    .floating-contact-stack .contact-icon:hover {
+        transform: scale(1.08) translateY(-2px);
+    }
+}
 /* Brand Colors */
 .contact-icon.phone { background: var(--accent-primary); color: #000; }
 .contact-icon.viber { background: #7360f2; }
@@ -2358,7 +2490,7 @@ html.custom-cursor--enabled .custom-cursor--visible {
 @media (max-width: 992px) {
     .faq-layout {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: var(--space-8);
     }
 }
 
@@ -2366,7 +2498,7 @@ html.custom-cursor--enabled .custom-cursor--visible {
 .service-text-grid, .services-text-grid-home {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    gap: var(--space-10);
 }
 
 .service-text-block, .sv3-text-block {
@@ -2414,6 +2546,23 @@ html.custom-cursor--enabled .custom-cursor--visible {
     .service-text-grid, .services-text-grid-home {
         grid-template-columns: 1fr;
     }
+}
+
+/* Ostatak na početnoj — blok ispod tekstualnih usluga */
+.services-footer {
+    text-align: center;
+    margin-top: var(--space-16);
+}
+
+.services-footer p {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.services-footer .sv3-link-inline {
+    color: #ff8359;
+    font-weight: 500;
+    text-decoration: underline;
 }
 
 /* Service Detail Pages (Extended Text Layout) */
@@ -2480,4 +2629,11 @@ html.custom-cursor--enabled .custom-cursor--visible {
 .service-tally-cta {
     padding-top: clamp(60px, 8vw, 100px);
     padding-bottom: clamp(60px, 8vw, 100px);
+}
+
+/* 404 — poravnanje sa spacing tokenima */
+.error-page__lead {
+    margin: var(--space-6) 0 var(--space-10);
+    color: var(--text-muted);
+    max-width: 500px;
 }

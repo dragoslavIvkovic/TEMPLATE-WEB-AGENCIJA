@@ -218,6 +218,16 @@ function initWebPlacePage() {
         }
     }, { signal: ac });
 
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener(
+            'click',
+            () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+            { signal: ac }
+        );
+    }
+
     const mobileToggle = document.querySelector('.mobile-nav-toggle');
     const mobileOverlay = document.querySelector('.mobile-nav-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
